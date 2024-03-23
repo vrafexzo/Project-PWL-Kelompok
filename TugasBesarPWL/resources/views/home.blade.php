@@ -1,5 +1,7 @@
 @extends('layouts.main')
 
 @section('container')
-    <h1>Halaman Home</h1>
+    @auth
+    <h1>HALO {{ auth()->user()->name }} di aplikasi {{ config('app.name') }}</h1>
+    @endauth
 @endsection
