@@ -1,0 +1,10 @@
+@extends('dashboard.layouts.main')
+
+@section('container')
+  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Polling</h1>
+  </div> 
+  <h2 class="index">kapan?</h2>
+  <h2 class="index">Jika sudah buka tombol href ke pemilihan sks</h2>
+
+@endsection
