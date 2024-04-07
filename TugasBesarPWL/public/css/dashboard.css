@@ -1,0 +1,99 @@
+.bi {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+}
+
+
+@media (min-width: 768px) {
+  .bd-placeholder-img-lg {
+    font-size: 3.5rem;
+  }
+}
+
+.bi {
+  vertical-align: -.125em;
+  fill: currentColor;
+}
+
+.nav-scroller {
+  position: relative;
+  z-index: 2;
+  height: 2.75rem;
+  overflow-y: hidden;
+}
+
+.nav-scroller .nav {
+  display: flex;
+  flex-wrap: nowrap;
+  padding-bottom: 1rem;
+  margin-top: -1px;
+  overflow-x: auto;
+  text-align: center;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+}
+
+
+/* NAVBAR  */
+.navbar{
+  display: flex;
+  flex-direction: row;
+  background-color: #AA0707 ;
+
+}
+
+.navbar-brand {
+  padding-top: .75rem;
+  padding-bottom: .75rem;
+}
+
+.navbar .form-control {
+  padding: .75rem 1rem;
+}
+
+.log-out {
+  display: inline-block;
+  background-color: #AA0707;
+  color: #fff;
+  margin-right: 15px;
+  font-size: 25px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.logout{
+  color: #ffffff;
+  text-decoration: none;
+}
+
+
+/* Sidebar  */
+.sidebar .nav-link {
+  font-size: .875rem;
+  font-weight: 500;
+}
+
+
+.sidebar-heading {
+  font-size: .75rem;
+}
+
+.sidebar{
+  height: 100vh;
+  background-color: #1b1b1b;
+}
+
+#sidebarMenu{
+  background-color: #1b1b1b;
+}
+
+ul.nav.flex-column li.nav-item a.nav-link {
+  color: #ffffff;
+}
+
+
+.btn{
+  font-size: 15px;
+}
