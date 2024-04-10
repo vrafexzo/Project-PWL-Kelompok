@@ -32,10 +32,10 @@
                             @csrf
                             @method('DELETE')
                             <button class="btn btn-edit">
-                                <i class="fa-solid fa-pen-to-square"></i>
+                                <i class="fa-solid icn-size fa-pen-to-square"></i>
                             </button>
                             <button type="submit" class="btn btn-hapus" data-id="{{ $matakuliah->id_mk }}">
-                                <i class="fa-solid fa-trash-can"></i>
+                                <i class="fa-solid icn-size fa-trash-can"></i>
                             </button>
                         </form>
                     </td>
@@ -45,7 +45,11 @@
         </table>
     </div>
 
-    <div>
+    <button id="toggleButton" onclick="hide()">
+        <i class="fa-solid add-mk fa-folder-plus"></i>
+        Add Data Mata Kuliah
+    </button><br>
+    <div id="formContainer">
         <h3>Add Data Mata Kuliah</h3>
         <form method="post" action="{{ route('mk-insert') }}">
             @csrf
@@ -69,7 +73,8 @@
                 <label for="kurikulum_id_kurikulum">ID Kurikulum</label>
                 <input type="text" name="kurikulum_id_kurikulum" id="kurikulum_id_kurikulum" class="form-control">
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <br>
+            <button type="submit" class="send btn-primary">Submit</button>
         </form>
     </div>
 @endsection
@@ -137,4 +142,13 @@
             });
         });
     });
+
+    function hide(){
+        const formContainer=document.getElementById('formContainer');
+        if (formContainer.style.display=='none'){
+            formContainer.style.display='block';
+        }else {formContainer.style.display='none';}
+    }
+
+
 </script>
