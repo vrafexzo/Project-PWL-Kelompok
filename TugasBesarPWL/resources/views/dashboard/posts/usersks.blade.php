@@ -8,7 +8,6 @@
             <h3 class="h2">Session expire please login again <a href="{{ route('login') }}">login</a></h3>
         @endauth
     </div> 
-    <h2>Pemilihan SKS Semester Antara</h2>
     <div class="table-responsive small">
         <form method="post" action="{{ route('salah') }}">
             @csrf
@@ -19,7 +18,7 @@
                         <th scope="col">Mata Kuliah</th>
                         <th scope="col">SKS</th>
                         <th scope="col">Kurikulum</th>
-                        <th scope="col">check</th>
+                        <th scope="col">Check</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -29,19 +28,15 @@
                         <td>{{ $matakuliah->nama_mk }}</td>
                         <td>{{ $matakuliah->sks }}</td>
                         <td>{{ $matakuliah->kurikulum_id_kurikulum }}</td>
-                        <td><input type="checkbox" id="{{ $matakuliah->id_mk }}" name="id-sks" value="{{ $matakuliah->sks }}"></td>
+                        <td class="check-box"><input type="checkbox" id="{{ $matakuliah->id_mk }}" name="id-sks" value="{{ $matakuliah->sks }}"></td>
                     </tr>
                     @endforeach
                 </tbody>
             </table>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="send btn-primary">Submit</button>
     </form>
     </div>
     <div>Total SKS yang dipilih: <span id="total-sks">0</span></div>
-
-    <div>
-        <h3>Add Data Mata Kuliah</h3>
-    </div>
 @endsection
 
 <!-- JavaScript -->
@@ -96,7 +91,7 @@
                 }).then((result) => {
                     if (result.isConfirmed) {
                         // Send the delete request using AJAX
-                        fetch(`/dashboard/mk-hapus/${id_mk}`, {
+                        fetch(/dashboard/mk-hapus/${id_mk}, {
                             method: 'DELETE',
                             headers: {
                                 'Content-Type': 'application/json',
