@@ -66,17 +66,16 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/dashboard', function () {
         return view('dashboard.index');
     })->name('dashboard'); //->middleware('auth');
-    
+
     Route::resource('/dashboard/index', DashboardPostController::class);
     Route::resource('/dashboard/posts', DashboardPostController::class);
-    
+
     Route::get('/dashboard/pemilihansks', [sksController::class, 'getSks'])->name('list-sks');
     Route::post('/dashboard/pemilihansks', [sksController::class, 'store'])->name('sks-insert');
-    
 });
 
 // Admin
-Route::middleware([adminMiddle::class])->group(function() {
+Route::middleware(['adminMiddle'::class])->group(function () {
     Route::get('/test', function () {
         return "BERHASIL";
     });
@@ -87,11 +86,10 @@ Route::middleware([adminMiddle::class])->group(function() {
     Route::get('/dashboard/user',  [AuthManager::class, 'getUsers'])->name('register');
     Route::post('/dashboard/user', [AuthManager::class, 'registerPost'])->name('register.post');
     Route::delete('/dashboard/user/{user}', [AuthManager::class, 'hapus'])->name('user-hapus');
-
 });
 
 // Prodi
-Route::middleware([prodiMiddle::class])->group(function() {
+Route::middleware(['prodiMiddle'::class])->group(function () {
     Route::get('/test', function () {
         return "BERHASIL";
     });
@@ -102,4 +100,17 @@ Route::middleware([prodiMiddle::class])->group(function() {
     Route::get('/dashboard/polling',  [pollingController::class, 'getPollings'])->name('polling');
     Route::post('/dashboard/polling',  [pollingController::class, 'store'])->name('polling.post');
     Route::delete('/dashboard/polling/{polling}',  [pollingController::class, 'hapus'])->name('polling-hapus');
+});
+
+
+Route::get('/create-polling', function () {
+    return view('dashboard.posts.admin.create-polling');
+});
+
+Route::get('/hasil-polling', function () {
+    return view('hasilpolling');
+});
+
+Route::get('/edit', function () {
+    return view('edit');
 });
