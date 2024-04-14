@@ -2,15 +2,16 @@
 
 @section('container')
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        @auth
+        <h3>Tambah Matakuliah</h3>
+        {{-- @auth
             <h1 class="h2">Selamat datang {{ auth()->user()->name }}</h1>
         @else
             <h1 class="h2">Session expire please login again <a href="{{ route('login') }}">login</a></h1>
-        @endauth
+        @endauth --}}
     </div> 
 
-    <div class="table-responsive small">
-        <table class="table table-striped table-sm">
+    <div class="table-responsive bor-mk">
+        <table class="table tb-mk table-striped table-sm">
             <thead>
                 <tr>
                     <th scope="col">Kode Mata Kuliah</th>
@@ -43,39 +44,39 @@
                 @endforeach
             </tbody>
         </table>
-    </div>
-
-    <button id="toggleButton" onclick="hide()">
-        <i class="fa-solid add-mk fa-folder-plus"></i>
-        Add Data Mata Kuliah
-    </button><br>
-    <div id="formContainer">
-        <h3>Add Data Mata Kuliah</h3>
-        <form method="post" action="{{ route('mk-insert') }}">
-            @csrf
-            <div class="form-group">
-                <label for="id_mk">ID</label>
-                <input type="text" name="id_mk" id="id_mk" class="form-control">
-            </div>
-            <div class="form-group">
-                <label for="nama_mk">Nama Mata Kuliah</label>
-                <input type="text" name="nama_mk" id="nama_mk" class="form-control">
-            </div>
-            <div class="form-group">
-                <label for="sks">SKS</label>
-                <select name="sks" id="sks" class="form-control">
-                    @for ($i = 0; $i <= 9; $i++)
-                        <option value="{{ $i }}">{{ $i }}</option>
-                    @endfor
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="kurikulum_id_kurikulum">ID Kurikulum</label>
-                <input type="text" name="kurikulum_id_kurikulum" id="kurikulum_id_kurikulum" class="form-control">
-            </div>
-            <br>
-            <button type="submit" class="send btn-primary">Submit</button>
-        </form>
+        <br>
+        <button id="toggleButton" onclick="hide()">
+            <i class="fa-solid add-mk fa-folder-plus"></i>
+            Add Data Mata Kuliah
+        </button><br>
+        <div id="formContainer">
+            <h3>Add Data Mata Kuliah</h3>
+            <form method="post" action="{{ route('mk-insert') }}">
+                @csrf
+                <div class="form-group">
+                    <label for="id_mk">ID</label>
+                    <input type="text" name="id_mk" id="id_mk" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="nama_mk">Nama Mata Kuliah</label>
+                    <input type="text" name="nama_mk" id="nama_mk" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="sks">SKS</label>
+                    <select name="sks" id="sks" class="form-control">
+                        @for ($i = 0; $i <= 9; $i++)
+                            <option value="{{ $i }}">{{ $i }}</option>
+                        @endfor
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="kurikulum_id_kurikulum">ID Kurikulum</label>
+                    <input type="text" name="kurikulum_id_kurikulum" id="kurikulum_id_kurikulum" class="form-control">
+                </div>
+                <br>
+                <button type="submit" class="send btn-primary">Submit</button>
+            </form>
+        </div>
     </div>
 @endsection
 
