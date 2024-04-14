@@ -2,16 +2,17 @@
 
 @section('container')
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        @auth
+        <h3>Pilih Matakuliah</h3>
+        {{-- @auth
             <h3 class="h2">Selamat datang {{ auth()->user()->name }}</h3>
         @else
             <h3 class="h2">Session expire please login again <a href="{{ route('login') }}">login</a></h3>
-        @endauth
+        @endauth --}}
     </div> 
-    <div class="table-responsive small">
+    <div class="table-responsive bor-mk2">
         <form method="post" action="{{ route('salah') }}">
             @csrf
-            <table class="table table-striped table-sm">
+            <table class="table tb-mk2 table-striped table-sm">
                 <thead>
                     <tr>
                         <th scope="col">Kode Mata Kuliah</th>
@@ -33,10 +34,12 @@
                     @endforeach
                 </tbody>
             </table>
-        <button type="submit" class="send btn-primary">Submit</button>
+            <div>
+                <button type="submit" class="btn-user btn-primary">Submit</button>
+                <div>Total SKS yang dipilih: <span id="total-sks">0</span></div>
+            </div>
     </form>
     </div>
-    <div>Total SKS yang dipilih: <span id="total-sks">0</span></div>
 @endsection
 
 <!-- JavaScript -->
