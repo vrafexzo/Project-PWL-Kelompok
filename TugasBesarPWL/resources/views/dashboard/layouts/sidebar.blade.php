@@ -43,21 +43,21 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link {{ Request::is('') ? 'active' : '' }}" href="{{ url('') }}">
+                    <a class="nav-link {{ Request::is('dashboard/posts/admin/create-polling') ? 'active' : '' }}" href="{{ url('/create-polling') }}">
                         <i class="fa-solid fa-file-pen"></i>
                         <span class="sidebar-text">Buat Polling</span>
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link {{ Request::is('#') ? 'active' : '' }}" href="{{ url('#') }}">
+                    <a class="nav-link {{ Request::is('dashboard/posts/admin/hasilpolling') ? 'active' : '' }}" href="{{ url('/hasil-polling') }}">
                         <i class="fa-solid fa-square-poll-horizontal"></i>
                         <span class="sidebar-text">Hasil Polling</span>
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link {{ Request::is('#') ? 'active' : '' }}" href="{{ url('#') }}">
+                    <a class="nav-link {{ Request::is('dashboard/posts/admin/edit') ? 'active' : '' }}" href="{{ url('/edit') }}">
                         <i class="fa-regular fa-pen-to-square"></i>
                         <span class="sidebar-text">Edit</span>
                     </a>
