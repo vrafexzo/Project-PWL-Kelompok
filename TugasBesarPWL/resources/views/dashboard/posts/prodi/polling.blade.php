@@ -1,15 +1,40 @@
 @extends('dashboard.layouts.main')
 
 @section('container')
-    <div class="table-responsive small">
-        <table class="table table-striped table-sm">
+    <div>
+        <h3>Tambah Jadwal Polling</h3>
+        <form method="post" action="{{ route('polling.post') }}">
+            @csrf
+            <div class="form-group">
+                <label for="id_polling">ID Polling</label>
+                <input type="text" name="id_polling" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="nama_polling">Nama Polling</label>
+                <input type="text" name="nama_polling" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="tanggal_mulai">Tanggal Mulai</label>
+                <input type="date" name="tanggal_mulai" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="tanggal_selesai">Tanggal Selesai</label>
+                <input type="date" name="tanggal_selesai" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+    <div class="table-responsive mt-4">
+        <table class="table table-striped">
             <thead>
                 <tr>
-                    <th scope="col">id polling</th>
-                    <th scope="col">nama polling</th>
-                    <th scope="col">tanggal mulai</th>
-                    <th scope="col">tanggal selesai</th>
-                    <th scope="col">Action</th>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nama Polling</th>
+                    <th scope="col">Tanggal Mulai</th>
+                    <th scope="col">Tanggal Selesai</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Aksi</th>
                 </tr>
             </thead>
             <tbody>
@@ -19,6 +44,15 @@
                     <td>{{ $polling->nama_polling }}</td>
                     <td>{{ $polling->tanggal_mulai }}</td>
                     <td>{{ $polling->tanggal_selesai }}</td>
+                    <td>
+                        @if($polling->tanggal_selesai < now())
+                            Expired
+                        @elseif($polling->tanggal_mulai > now())
+                            Belum Aktif
+                        @else
+                            Aktif
+                        @endif
+                    </td>
                     <td>
                         <form id="hapusForm_{{ $polling->id_polling }}" action="{{ route('polling-hapus', ['polling' => $polling->id_polling]) }}" method="POST">
                             @csrf
@@ -35,29 +69,5 @@
                 @endforeach
             </tbody>
         </table>
-    </div>
-
-    <div>
-        <h3>Add Data Mata Kuliah</h3>
-        <form method="post" action="{{ route('polling.post') }}">
-            @csrf
-            <div class="form-group">
-                <label for="id_polling">id polling</label>
-                <input type="text" name="id_polling" class="form-control">
-            </div>
-            <div class="form-group">
-                <label for="nama_polling">nama polling</label>
-                <input type="text" name="nama_polling" class="form-control">
-            </div>
-            <div class="form-group">
-                <label for="tanggal_mulai">tanggal mulai</label>
-                <input type="text" name="tanggal_mulai" class="form-control">
-            </div>
-            <div class="form-group">
-                <label for="tanggal_selesai">tanggal selesai</label>
-                <input type="text" name="tanggal_selesai" class="form-control">
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
     </div>
 @endsection
