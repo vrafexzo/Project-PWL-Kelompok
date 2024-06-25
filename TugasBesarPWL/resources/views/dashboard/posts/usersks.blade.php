@@ -2,24 +2,24 @@
 
 @section('container')
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h3>Pilih Matakuliah</h3>
-        {{-- @auth
+        @auth
             <h3 class="h2">Selamat datang {{ auth()->user()->name }}</h3>
         @else
             <h3 class="h2">Session expire please login again <a href="{{ route('login') }}">login</a></h3>
-        @endauth --}}
+        @endauth
     </div> 
-    <div class="table-responsive bor-mk2">
+    <h2>Pemilihan SKS Semester Antara</h2>
+    <div class="table-responsive small">
         <form method="post" action="{{ route('salah') }}">
             @csrf
-            <table class="table tb-mk2 table-striped table-sm">
+            <table class="table table-striped table-sm">
                 <thead>
                     <tr>
                         <th scope="col">Kode Mata Kuliah</th>
                         <th scope="col">Mata Kuliah</th>
                         <th scope="col">SKS</th>
                         <th scope="col">Kurikulum</th>
-                        <th scope="col">Check</th>
+                        <th scope="col">check</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -29,17 +29,15 @@
                         <td>{{ $matakuliah->nama_mk }}</td>
                         <td>{{ $matakuliah->sks }}</td>
                         <td>{{ $matakuliah->kurikulum_id_kurikulum }}</td>
-                        <td class="check-box"><input type="checkbox" id="{{ $matakuliah->id_mk }}" name="id-sks" value="{{ $matakuliah->sks }}"></td>
+                        <td><input type="checkbox" id="{{ $matakuliah->id_mk }}" name="id-sks" value="{{ $matakuliah->sks }}"></td>
                     </tr>
                     @endforeach
                 </tbody>
             </table>
-            <div>
-                <button type="submit" class="btn-user btn-primary">Submit</button>
-                <div>Total SKS yang dipilih: <span id="total-sks">0</span></div>
-            </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
     </form>
     </div>
+    <div>Total SKS yang dipilih: <span id="total-sks">0</span></div>
 @endsection
 
 <!-- JavaScript -->
@@ -94,7 +92,7 @@
                 }).then((result) => {
                     if (result.isConfirmed) {
                         // Send the delete request using AJAX
-                        fetch(/dashboard/mk-hapus/${id_mk}, {
+                        fetch(`/dashboard/mk-hapus/${id_mk}`, {
                             method: 'DELETE',
                             headers: {
                                 'Content-Type': 'application/json',

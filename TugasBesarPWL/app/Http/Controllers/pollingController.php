@@ -33,7 +33,7 @@ class pollingController extends Controller
             'tanggal_selesai' => 'required'
         ])->validate();
 
-        $polling = polling::create($validatedData);
+        $polling = Polling::create($validatedData);
 
         return Redirect::to('dashboard/polling')->with('success', 'Mata kuliah berhasil ditambahkan');
     }
